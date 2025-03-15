@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script type="module" src="https://unpkg.com/@github/markdown-toolbar-element@2.2.1/dist/index.js"></script>
+    <link href="https://unpkg.com/@primer/css@^21.0.7/dist/primer.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Blog Post Editor</h1>
+            <p class="mt-2 text-sm text-gray-600">Create and preview your blog post with GitHub-style markdown</p>
+        </div>
+
+        <!-- Title Input -->
+        <div class="mb-6">
+            <label for="post-title" class="block text-lg font-medium text-gray-700 mb-2">Blog Post Title</label>
+            <input type="text" id="post-title" 
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-xl p-4"
+                   placeholder="Enter your blog post title"
+                   autofocus>
+        </div>
+
+        <!-- Editor Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Editor -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="border-b border-gray-200 p-4">
+                    <markdown-toolbar for="editor-textarea" class="flex flex-wrap gap-2">
+                        <md-bold class="p-2 hover:bg-gray-100 rounded">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M4 2h4.5a3.501 3.501 0 0 1 2.852 5.53A3.499 3.499 0 0 1 9.5 14H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Zm1 7v3h4.5a1.5 1.5 0 0 0 0-3Zm3.5-2a1.5 1.5 0 0 0 0-3H5v3Z"/>
+                            </svg>
+                        </md-bold>
+                        <md-italic class="p-2 hover:bg-gray-100 rounded">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M6 2.75A.75.75 0 0 1 6.75 2h6.5a.75.75 0 0 1 0 1.5h-2.505l-3.858 9H9.25a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5h2.505l3.858-9H6.75A.75.75 0 0 1 6 2.75Z"/>
+                            </svg>
+                        </md-italic>
+                        <md-quote class="p-2 hover:bg-gray-100 rounded">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/>
+                            </svg>
+                        </md-quote>
+                        <md-code class="p-2 hover:bg-gray-100 rounded">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/>
+                            </svg>
+                        </md-code>
+                        <md-link class="p-2 hover:bg-gray-100 rounded">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"/>
+                            </svg>
+                        </md-link>
+                        <md-image class="p-2 hover:bg-gray-100 rounded">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M12.5 7.25a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-.75.75h-8.5a.75.75 0 0 1-.75-.75V8a.75.75 0 0 1 .75-.75h8.5ZM11.75 9c0-.896-.529-2-2.25-2s-2.25 1.104-2.25 2c0 .495.336 1.5 2.25 1.5s2.25-1.005 2.25-1.5ZM4 2a.75.75 0 0 0-.75.75v.443c0 .32.181.576.346.731.247.185.591.396.968.592.629.33 1.363.647 2.112.647.74 0 1.474-.317 2.103-.647.377-.196.72-.407.967-.592.165-.155.346-.411.346-.731V2.75A.75.75 0 0 0 9.342 2h-5.38c.185.094.345.199.477.308a3.12 3.12 0 0 1 .633.668c.221.313.402.673.402 1.024v.443c0 .320-.181.576-.346.731-.247.185-.591.396-.968.592-.629.33-1.363.647-2.112.647-.74 0-1.474-.317-2.103-.647-.377-.196-.72-.407-.967-.592C4.181 5.024 4 4.768 4 4.448V4c0-.351.181-.711.402-1.024a3.119 3.119 0 0 1 .633-.668c.132-.109.292-.214.477-.308H4Z"/>
+                            </svg>
+                        </md-image>
+                    </markdown-toolbar>
+                </div>
+                <div class="p-4">
+                    <textarea id="editor-textarea" 
+                              class="w-full h-[600px] font-mono text-sm border-0 focus:ring-0 resize-none p-4"
+                              placeholder="Type your markdown here..."></textarea>
+                </div>
+            </div>
+
+            <!-- Preview -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="border-b border-gray-200 p-4">
+                    <h2 class="text-lg font-medium text-gray-900">Preview</h2>
+                </div>
+                <div id="preview-content" class="p-4 prose prose-slate max-w-none markdown-body">
+                    <!-- Preview content will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="mt-6 flex justify-end">
+            <button id="save-button" 
+                    class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Save Post
+            </button>
+        </div>
+
+        <!-- Status Message -->
+        <div id="status-message" class="mt-4 text-sm"></div>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('editor-textarea');
+        const previewContent = document.getElementById('preview-content');
+        const titleInput = document.getElementById('post-title');
+        const saveButton = document.getElementById('save-button');
+        const statusMessage = document.getElementById('status-message');
+
+        let debounceTimeout;
+
+        textarea.addEventListener('input', () => {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(updatePreview, 300);
+        });
+
+        async function updatePreview() {
+            const content = textarea.value;
+            try {
+                const response = await fetch('/preview', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ content }),
+                });
+                const data = await response.json();
+                previewContent.innerHTML = data.html;
+            } catch (error) {
+                console.error('Error updating preview:', error);
+            }
+        }
+
+        saveButton.addEventListener('click', async () => {
+            const title = titleInput.value.trim();
+            const content = textarea.value.trim();
+
+            if (!title) {
+                showStatus('Please enter a title for your blog post', 'error');
+                return;
+            }
+
+            if (!content) {
+                showStatus('Please enter some content for your blog post', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch('/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ title, content }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showStatus(`Successfully saved in ${data.directory}/index.md`, 'success');
+                } else {
+                    showStatus(data.error || 'Error saving post', 'error');
+                }
+            } catch (error) {
+                showStatus('Error saving post', 'error');
+                console.error('Error:', error);
+            }
+        });
+
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = 'mt-4 text-sm ' + 
+                (type === 'error' ? 'text-red-600' : 'text-green-600');
+            
+            setTimeout(() => {
+                statusMessage.textContent = '';
+            }, 5000);
+        }
+
+        // Handle file uploads via drag and drop
+        textarea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            textarea.classList.add('border-2', 'border-indigo-500', 'border-dashed');
+        });
+
+        textarea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            textarea.classList.remove('border-2', 'border-indigo-500', 'border-dashed');
+        });
+
+        textarea.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            textarea.classList.remove('border-2', 'border-indigo-500', 'border-dashed');
+
+            const files = Array.from(e.dataTransfer.files);
+            const imageFiles = files.filter(file => file.type.startsWith('image/'));
+
+            for (const file of imageFiles) {
+                try {
+                    const reader = new FileReader();
+                    await new Promise((resolve, reject) => {
+                        reader.onload = () => {
+                            try {
+                                const base64String = reader.result;
+                                const imageMarkdown = `![${file.name}](${base64String})`;
+                                
+                                const start = textarea.selectionStart;
+                                const end = textarea.selectionEnd;
+                                textarea.value = textarea.value.substring(0, start) + 
+                                               imageMarkdown + 
+                                               textarea.value.substring(end);
+                                
+                                updatePreview();
+                                resolve();
+                            } catch (error) {
+                                reject(error);
+                            }
+                        };
+                        reader.onerror = () => reject(new Error('Failed to read file'));
+                        reader.readAsDataURL(file);
+                    });
+                } catch (error) {
+                    console.error('Error processing image:', error);
+                    showStatus('Error processing image: ' + file.name, 'error');
+                }
+            }
+        });
+
+        // Also handle paste events for images
+        textarea.addEventListener('paste', async (e) => {
+            const items = Array.from(e.clipboardData.items);
+            const imageItems = items.filter(item => item.type.startsWith('image/'));
+
+            for (const item of imageItems) {
+                try {
+                    const file = item.getAsFile();
+                    const reader = new FileReader();
+                    await new Promise((resolve, reject) => {
+                        reader.onload = () => {
+                            try {
+                                const base64String = reader.result;
+                                const imageMarkdown = `![pasted_image_${Date.now()}](${base64String})`;
+                                
+                                const start = textarea.selectionStart;
+                                const end = textarea.selectionEnd;
+                                textarea.value = textarea.value.substring(0, start) + 
+                                               imageMarkdown + 
+                                               textarea.value.substring(end);
+                                
+                                updatePreview();
+                                resolve();
+                            } catch (error) {
+                                reject(error);
+                            }
+                        };
+                        reader.onerror = () => reject(new Error('Failed to read file'));
+                        reader.readAsDataURL(file);
+                    });
+                } catch (error) {
+                    console.error('Error processing pasted image:', error);
+                    showStatus('Error processing pasted image', 'error');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
