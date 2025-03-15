@@ -21,14 +21,14 @@ def editor():
 @app.route('/preview', methods=['POST'])
 def preview():
     content = request.json.get('content', '')
-    # Use GitHub-style markdown extensions
+    # Use GitHub-style markdown extensions and allow raw HTML
     html = markdown.markdown(content, extensions=[
         'markdown.extensions.fenced_code',
         'markdown.extensions.tables',
         'markdown.extensions.codehilite',
         'markdown.extensions.nl2br',
         'markdown.extensions.sane_lists'
-    ])
+    ], output_format='html5')
     return jsonify({'html': html})
 
 def save_base64_image(base64_str, post_dir):

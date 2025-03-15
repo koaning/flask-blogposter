@@ -9,6 +9,42 @@
     <script type="module" src="https://unpkg.com/@github/markdown-toolbar-element@2.2.1/dist/index.js"></script>
     <link href="https://unpkg.com/@primer/css@^21.0.7/dist/primer.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css" rel="stylesheet">
+    <style>
+        /* Override some Tailwind styles that might conflict with GitHub markdown */
+        .markdown-body {
+            background-color: white;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+            font-size: 16px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            padding: 2rem;
+        }
+        
+        .markdown-body figure {
+            margin: 2em 0;
+            text-align: center;
+        }
+
+        .markdown-body figure img {
+            margin: 0 auto;
+            max-width: 100%;
+            display: block;
+        }
+
+        .markdown-body figcaption {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+            font-style: italic;
+        }
+        
+        .markdown-body pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            padding: 16px;
+            overflow: auto;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -200,7 +236,7 @@
                         reader.onload = () => {
                             try {
                                 const base64String = reader.result;
-                                const imageMarkdown = `![${file.name}](${base64String})`;
+                                const imageMarkdown = `<figure>\n<img src="${base64String}" alt="${file.name}" style="margin: 0 auto; display: block;">\n<figcaption style="text-align: center; color: #666; font-style: italic;">${file.name}</figcaption>\n</figure>\n\n`;
                                 
                                 const start = textarea.selectionStart;
                                 const end = textarea.selectionEnd;
@@ -237,7 +273,8 @@
                         reader.onload = () => {
                             try {
                                 const base64String = reader.result;
-                                const imageMarkdown = `![pasted_image_${Date.now()}](${base64String})`;
+                                const filename = `pasted_image_${Date.now()}`;
+                                const imageMarkdown = `<figure>\n<img src="${base64String}" alt="${filename}" style="margin: 0 auto; display: block;">\n<figcaption style="text-align: center; color: #666; font-style: italic;">${filename}</figcaption>\n</figure>\n\n`;
                                 
                                 const start = textarea.selectionStart;
                                 const end = textarea.selectionEnd;
